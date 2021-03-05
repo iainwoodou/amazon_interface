@@ -1,0 +1,1 @@
+{"availableimages":[{"name":"Jupyter","OS":"Linux","Type":"EC2","HTTPPort":"8888"},{"name":"Genie","OS":"Linux","Type":"EC2","HTTPPort":"3000"}],"runningcontainers":[{"name":"jupyter","state":"RUNNING","started":"2021-03-05T11:14:26+00:00","ref":"5b33b67d16bb4515a9e65e8048c63ccd","cluster":"oucontainertest3-Student1GPUECSCluster","password":null,"containerfqdn":null}]}

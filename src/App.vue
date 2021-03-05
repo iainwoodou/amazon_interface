@@ -2,10 +2,8 @@
   <v-app>
     <v-app-bar
       app
-      
       dark
     >
-  
       <svg
    xmlns="http://www.w3.org/2000/svg"
    width="30"
@@ -40,19 +38,19 @@
     </v-app-bar>
 
     <v-main>
-      <HelloWorld/>
+      <Interface/>
     </v-main>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
+import Interface from './components/Interface';
 
 export default {
   name: 'App',
 
   components: {
-    HelloWorld,
+    Interface,
   },
 
  

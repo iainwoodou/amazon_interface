@@ -1,0 +1,1 @@
+{"availableimages":[{"name":"Jupyter","OS":"Linux","Type":"EC2","HTTPPort":"8888"},{"name":"Genie","OS":"Linux","Type":"EC2","HTTPPort":"3000"}],"runningcontainers":[]}

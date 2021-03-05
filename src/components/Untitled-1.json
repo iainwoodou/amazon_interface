@@ -1,0 +1,108 @@
+{
+    "available": [
+        {
+            "name": "Jupyter",
+            "os": "Linux",
+            "type": "EC2",
+            "port": "8888"
+        },
+        {
+            "name": "Genie",
+            "os": "Linux",
+            "type": "EC2",
+            "port": "3000"
+        }
+    ],
+    "active": [
+        {
+            "name": null,
+            "state": "PROVISIONING",
+            "started": null,
+            "ref": "a26e714eeb89436b99ca91c2aef21a6f",
+            "cluster": "oucontainertest3-Student1GPUECSCluster"
+        }
+    ],
+    "availablecontainers": [
+        {
+            "Name": "Jupyter",
+            "FileName": "jupyterbeta.json",
+            "Type": "EC2",
+            "OS": "Linux",
+            "GPU": "Yes",
+            "HTTPPort": "8888",
+            "ClusterA": "oucontainertest3-Student1GPUECSCluster",
+            "ClusterB": "oucontainertest3-Student1GPUECSCluster",
+            "SecurityGroup": "sg-0b13f7a31321d9d9c",
+            "SubnetA": "subnet-01aa3e0482759d32c",
+            "SubnetB": "subnet-00031ad89ca892bda",
+            "SubnetC": "subnet-0beaaab1fc8304f58",
+            "VPCId": "vpc-0986f3c6f3ea0f2e0",
+            "TaskDefinition": "jupyter",
+            "ReadOnlyEFSMount": "TRUE",
+            "ReadOnlyEFSMountPath": "\/outcontainertest3",
+            "IFSSOURCE": "\/dfs\/jupyterbeta\/"
+        },
+        {
+            "Name": "Genie",
+            "FileName": "genie.json",
+            "Type": "EC2",
+            "OS": "Linux",
+            "GPU": "Yes",
+            "HTTPPort": "3000",
+            "ClusterA": "oucontainertest3-StudentSmallECSCluster-NYhbnuCWUtod",
+            "ClusterB": "oucontainertest3-StudentSmallECSCluster-NYhbnuCWUtod",
+            "SecurityGroup": "sg-0b13f7a31321d9d9c",
+            "SubnetA": "subnet-01aa3e0482759d32c",
+            "SubnetB": "subnet-00031ad89ca892bda",
+            "SubnetC": "subnet-0beaaab1fc8304f58",
+            "VPCId": "vpc-0986f3c6f3ea0f2e0",
+            "TaskDefinition": "Genie",
+            "ReadOnlyEFSMount": "TRUE",
+            "ReadOnlyEFSMountPath": "\/outcontainertest3"
+        }
+    ],
+    "runningmachines": [
+        [
+            {
+                "attachments": [],
+                "capacityProviderName": "CP_Student1GPU",
+                "clusterArn": "arn:aws:ecs:eu-west-2:150846472375:cluster\/oucontainertest3-Student1GPUECSCluster",
+                "containers": [],
+                "cpu": "0",
+                "createdAt": "2021-03-04T11:01:56+00:00",
+                "desiredStatus": "RUNNING",
+                "group": "isw44",
+                "healthStatus": "UNKNOWN",
+                "lastStatus": "PROVISIONING",
+                "launchType": "EC2",
+                "memory": "15600",
+                "overrides": {
+                    "containerOverrides": [
+                        {
+                            "name": "Proxy",
+                            "environment": [
+                                {
+                                    "name": "httppassword",
+                                    "value": "qa18UviSTn"
+                                },
+                                {
+                                    "name": "hostname",
+                                    "value": "102446040be23d1278434276093.dev.studentcloud.uk"
+                                },
+                                {
+                                    "name": "IFSSOURCE",
+                                    "value": "\/dfs\/jupyterbeta\/"
+                                }
+                            ]
+                        }
+                    ],
+                    "inferenceAcceleratorOverrides": []
+                },
+                "tags": [],
+                "taskArn": "arn:aws:ecs:eu-west-2:150846472375:task\/oucontainertest3-Student1GPUECSCluster\/a26e714eeb89436b99ca91c2aef21a6f",
+                "taskDefinitionArn": "arn:aws:ecs:eu-west-2:150846472375:task-definition\/studenttaskOUTD-6040be23d9b6b5-20699698:1",
+                "version": 1
+            }
+        ]
+    ]
+}
