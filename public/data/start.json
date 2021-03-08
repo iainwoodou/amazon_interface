@@ -1,1 +1,1 @@
-{"availableimages":[{"name":"Jupyter","OS":"Linux","Type":"EC2","HTTPPort":"8888"},{"name":"Genie","OS":"Linux","Type":"EC2","HTTPPort":"3000"}],"runningcontainers":[]}
+{"availableimages":[{"name":"Jupyter","OS":"Linux","Type":"EC2","HTTPPort":"8888"},{"name":"Genie","OS":"Linux","Type":"EC2","HTTPPort":"3000"}],"runningcontainers":[{"name":"jupyter","state":"RUNNING","started":"2021-03-05T19:46:53+00:00","ref":"2979861e9bc74f3e96cf1949e10aeb89","cluster":"oucontainertest3-Student1GPUECSCluster","password":null,"containerfqdn":null}]}

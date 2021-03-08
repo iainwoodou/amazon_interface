@@ -22,19 +22,15 @@
     
        <v-toolbar-title class="ml-4"> Student Cloud</v-toolbar-title>
          <v-spacer></v-spacer>
-<!--
+
            <v-btn
             icon
    @click="$vuetify.theme.dark = !$vuetify.theme.dark"
           >
             <v-icon>mdi-theme-light-dark</v-icon>
           </v-btn>
-          -->
-           <v-btn
-           color="primary">
-            <v-icon class="mr-4">mdi-folder</v-icon> File Manager
-          </v-btn>
-    
+          
+   
     </v-app-bar>
 
     <v-main>
