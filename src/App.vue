@@ -49,6 +49,17 @@ export default {
     Interface,
   },
 
+mounted(){
+  var  url = "https://contest1.open.ac.uk/aws-service.php"
+console.log("Going :",url);
+      fetch(url)
+        .then((res) => {
+          return res;
+        })
+        .then((data) => {
+          console.log("GoT IT",data);
+                  });
+}
  
 };
 </script>

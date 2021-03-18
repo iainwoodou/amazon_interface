@@ -119,24 +119,26 @@
             </g>
           </svg>
         </div>
-        <h1>Currently Provisioning a Machine please wait</h1>
-        <v-btn color="error" @click="stopMachine(startingmachine)">
-          Stop <v-icon right dark>mdi-cloud-off-outline</v-icon>
-        </v-btn>
-             <v-progress-linear
-        height="35"
-        indeterminate
-        align-center
-      ></v-progress-linear>
+        <h1 style="text-align: center">
+          Currently Provisioning a Machine please wait
+        </h1>
+        <div style="max-width: 70%; margin: 0 auto; text-align: center">
+          <p>Your machine is starting up, it will appear shortly.</p>
+          <v-btn color="error" @click="stopMachine(startingmachine)">
+            Stop <v-icon right dark>mdi-cloud-off-outline</v-icon>
+          </v-btn>
+
+          <v-progress-linear
+            height="35"
+            indeterminate
+            align-center
+          ></v-progress-linear>
+        </div>
       </div>
 
       <div v-if="!startingmachine">
         <h2 style="font-weight: normal">Available machines</h2>
-        <p>
-          These are your available virtual machines .... blah blah blah ......
-          more info if needed click start to start ... you can figure it out
-          from there
-        </p>
+        <p>These are your available virtual machines.</p>
 
         <v-row>
           <v-col
@@ -162,8 +164,11 @@
 
               <v-card-title>{{ available["name"] }}</v-card-title>
               <v-card-subtitle v-if="machines[available.name.toLowerCase()]">
-               <strong>{{machines[available.name.toLowerCase()].state}} </strong> <BR />
-               {{machines[available.name.toLowerCase()].started}} 
+                <strong
+                  >{{ machines[available.name.toLowerCase()].state }}
+                </strong>
+                <BR />
+                {{ machines[available.name.toLowerCase()].started }}
               </v-card-subtitle>
               <v-card-text>
                 <v-chip-group>
@@ -175,13 +180,12 @@
 
               <v-divider class="mx-4"></v-divider>
               <v-card-actions>
-
-     <v-progress-linear
-        height="35"
-        indeterminate
-         v-if="!machines[available.name.toLowerCase()] && !allowstart"
-        align-center
-      ></v-progress-linear>
+                <v-progress-linear
+                  height="35"
+                  indeterminate
+                  v-if="!machines[available.name.toLowerCase()] && !allowstart"
+                  align-center
+                ></v-progress-linear>
 
                 <v-btn
                   color="success"
@@ -193,9 +197,7 @@
                 <v-btn
                   color="error"
                   v-if="machines[available.name.toLowerCase()]"
-                  @click="
-                    stopMachine(machines[available.name.toLowerCase()])
-                  "
+                  @click="stopMachine(machines[available.name.toLowerCase()])"
                 >
                   Stop <v-icon right dark>mdi-cloud-off-outline</v-icon>
                 </v-btn>
@@ -212,18 +214,15 @@
             </v-card>
           </v-col>
         </v-row>
-<v-row v-if="machines.length">
-  <v-col cols="12">
-    Use the file manager to Upload and Download files from your containers <br />
-          <v-btn
-           color="primary"
-           href="/filemanager/index.php">
-            <v-icon class="mr-4">mdi-folder</v-icon> File Manager
-          </v-btn>
-    
-  </v-col>
-</v-row>
-
+        <v-row v-if="machines.length">
+          <v-col cols="12">
+            Use the file manager to Upload and Download files from your
+            containers <br />
+            <v-btn color="primary" href="/filemanager/index.php">
+              <v-icon class="mr-4">mdi-folder</v-icon> File Manager
+            </v-btn>
+          </v-col>
+        </v-row>
       </div>
       <v-dialog
         v-model="dialog"
@@ -233,51 +232,54 @@
         <v-card>
           <div v-if="!dialoginfo">
             <v-card-title class="headline"> Loading information </v-card-title>
-             <v-card-text>
-               We are getting your credentials for the machine.
-             </v-card-text>
-             <v-progress-linear
-        height="35"
-        indeterminate
-        align-center
-      ></v-progress-linear>
+            <v-card-text>
+              We are getting your credentials for the machine.
+            </v-card-text>
+            <v-progress-linear
+              height="35"
+              indeterminate
+              align-center
+            ></v-progress-linear>
           </div>
           <div v-else>
             <v-card-title class="headline">
               Log into {{ dialoginfo.name }}
             </v-card-title>
             <v-card-text>
-<p>For initial login:</p>
-<p>UserName: <strong>student</strong></p>
-<p>Password: <strong>{{ dialoginfo.password }}</strong> </p>
+              <p>For initial login:</p>
+              <p>UserName: <strong>student</strong></p>
+              <p>
+                Password: <strong>{{ dialoginfo.password }}</strong>
+              </p>
 
-<p>
-For Jupyter Notesbooks please then use the following password.
-</p>
-<p>
-Password: <strong>WaltonHall</strong>
-</p>
-
+              <p>
+                For Jupyter Notesbooks please then use the following password.
+              </p>
+              <p>Password: <strong>WaltonHall</strong></p>
             </v-card-text>
 
             <v-card-actions>
               <v-spacer></v-spacer>
 
-              <v-btn disabled text v-if="dialoginfo.state!='ready'">
-                  Please Wait .... connecting
+              <v-btn disabled text v-if="dialoginfo.state != 'ready'">
+                Please Wait .... connecting
               </v-btn>
 
-              <v-btn color="green darken-1" :href="'https://'+dialoginfo.containerfqdn" text  v-if="dialoginfo.state==='ready'">
-               Click here to connect
+              <v-btn
+                color="green darken-1"
+                :href="'https://' + dialoginfo.containerfqdn"
+                text
+                v-if="dialoginfo.state === 'ready'"
+              >
+                Click here to connect
               </v-btn>
             </v-card-actions>
           </div>
-  
         </v-card>
       </v-dialog>
     </div>
 
-     <pre>
+    <pre style="display: none">
 {{machines}}
 ---------------------------------------------------------------------------- <br />
 {{availableImages}}
@@ -285,10 +287,7 @@ Password: <strong>WaltonHall</strong>
 {{runningContainers}}
 
      </pre>
-     
   </v-container>
-
- 
 </template>
 
 <script>
@@ -305,12 +304,12 @@ export default {
       machines: {},
       startingmachine: false,
       dialoginfo: null,
-      allowstart : true
+      allowstart: true,
     };
   },
   methods: {
     startMachine(i) {
-    this.allowstart = false;
+      this.allowstart = false;
       console.log("Starting machine: ", i);
       let postdata = new FormData();
       postdata.append("action", "startcontainer");
@@ -325,8 +324,7 @@ export default {
         })
         .then((data) => {
           console.log(data);
-            this.updateJson();
-          
+          this.updateJson();
         });
     },
     stopMachine(i) {
@@ -352,7 +350,7 @@ export default {
       console.log("view ", i);
       this.dialoginfo = null;
       console.log("Viewing machine: ", i.ref);
-      
+
       /*
       let postdata = new FormData();
       postdata.append("action", "viewcontainer");
@@ -363,8 +361,8 @@ export default {
       })
 */
 
-var  url = "aws-service.php?action=viewcontainer&container="+i.ref
-console.log(url);
+      var url = "aws-service.php?action=viewcontainer&container=" + i.ref;
+      console.log(url);
       fetch(url)
         .then((res) => {
           console.log(res);
@@ -373,15 +371,14 @@ console.log(url);
         .then((data) => {
           console.log(data);
           this.dialoginfo = data;
-          if(data.state!=='ready'){
-            setTimeout(this.showDialog(i),3000)
+          if (data.state !== "ready") {
+            setTimeout(this.showDialog(i), 3000);
           }
-
         });
       this.dialog = true;
     },
     updateJson() {
-         //   fetch("data/start.json")
+      //   fetch("data/start.json")
       fetch("aws-service.php")
         .then((res) => {
           console.log(res);
@@ -398,18 +395,21 @@ console.log(url);
           set a callback function
           */
           this.startingmachine = false;
-          console.log("looping running containers")
+          console.log("looping running containers");
           if (this.runningContainers.length) {
             this.runningContainers.forEach((element) => {
               if (element.name) {
                 obj[element.name.toLowerCase()] = element;
+                if(element.state!=="ready"){
+                  setTimeout(this.updateJson, 5000);
+                }
               } else {
                 this.startingmachine = element;
                 setTimeout(this.updateJson, 5000);
               }
             });
           }
-          console.log("leaving update")
+          console.log("leaving update");
           this.machines = obj;
           this.gotdata = true;
           this.allowstart = true;
